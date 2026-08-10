@@ -20,6 +20,9 @@ sudo apt install python3 -y
 # Download the installer
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
+#install unzip command
+apt install unzip -y 
+
 # Unzip the package
 unzip awscliv2.zip
 
