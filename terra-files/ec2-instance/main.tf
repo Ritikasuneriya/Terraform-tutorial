@@ -50,11 +50,12 @@ resource "aws_security_group" "terra-security" {
 }
 
 resource aws_instance my-ec2 {
+       count = 2 
        ami = var.ami # ec2-instance 
        instance_type = var.instance_type 
        security_groups = [aws_security_group.terra-security.name] 
        key_name = aws_key_pair.my_key.key_name
-       user_data = file(script)
+       user_data = file("script")
 
        root_block_device {
           volume_size = var.root_volume_size
