@@ -1,0 +1,11 @@
+work-flow 
+create a Directory 
+
+# mkdir terraform-dir
+# cd terraform-dir
+
+create a terraform file in this 
+# vi file.tf  (file created to automate file creation) (code saved in folder)
+# terraform init   (initialize terraform envinoment)
+# terraform validate   (validate that file (file.tf) is correct or having any issues)
+
