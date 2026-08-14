@@ -50,9 +50,13 @@ resource "aws_security_group" "terra-security" {
 }
 
 resource aws_instance my-ec2 {
-       count = 2 
+       for_each = tomap({
+        reet = "t3.micro"
+        tracker = "t3.medium"
+        
+       })
        ami = var.ami # ec2-instance 
-       instance_type = var.instance_type 
+       instance_type = each.value 
        security_groups = [aws_security_group.terra-security.name] 
        key_name = aws_key_pair.my_key.key_name
        user_data = file("script")
@@ -64,7 +68,7 @@ resource aws_instance my-ec2 {
        }
 
        tags = {
-         name = "reet"
+         name = each.key
 
        }
 
