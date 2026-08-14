@@ -13,3 +13,9 @@
   
 # }
 
+output "ec2_instance_ip" {
+    value = [
+        for key in aws_instance.my-ec2 :  key.public_ip
+    ]
+  
+}

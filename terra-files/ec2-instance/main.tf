@@ -55,6 +55,8 @@ resource aws_instance my-ec2 {
         tracker = "t3.small"
         
        })
+
+       depends_on = [ aws_security_group.terra-security ]
        ami = var.ami # ec2-instance 
        instance_type = each.value 
        security_groups = [aws_security_group.terra-security.name] 
@@ -62,7 +64,7 @@ resource aws_instance my-ec2 {
        user_data = file("script")
 
        root_block_device {
-          volume_size = var.root_volume_size
+          volume_size = var.env == "prod" ? 20 : var.default_root_volume_size
           volume_type = "gp3"
 
        }
@@ -72,4 +74,10 @@ resource aws_instance my-ec2 {
 
        }
 
+}
+
+
+resource aws_instance my-ec2-new {
+    ami = "unkown"
+    instance_type = "unknown"
 }

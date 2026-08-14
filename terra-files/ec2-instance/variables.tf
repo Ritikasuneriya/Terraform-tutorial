@@ -9,10 +9,15 @@ variable "ami" {
     type = string
 }
 
-variable "root_volume_size" {
+variable "default_root_volume_size" {
     default = 8
     type = number
      
+  
+}
+variable "env" {
+    default = "prod"
+    type = string
   
 }
 
