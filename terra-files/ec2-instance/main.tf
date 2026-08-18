@@ -52,7 +52,7 @@ resource "aws_security_group" "terra-security" {
 resource aws_instance my-ec2 {
        for_each = tomap({
         reet = "t3.micro"
-        tracker = "t3.small"
+        tracker = "t3.micro"
         
        })
 
