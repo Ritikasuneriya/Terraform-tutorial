@@ -1,9 +1,8 @@
-terraform {
-  backend "s3" {
-    bucket = "remote-backend-duckku"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
-    dynamodb_table = "tfstate-lock"
+resource "aws_s3_bucket" "remote-backend" {
+  bucket = "remote-backend-duckku"
+  object_lock_enabled = true
+  
+  tags = {
+    Name        = "remote-backend-duckku"
   }
 }
-
